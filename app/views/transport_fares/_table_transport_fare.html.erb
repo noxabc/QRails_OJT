@@ -1,0 +1,23 @@
+<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Pick-up Location</th>
+      <th>Drop Location</th>
+      <th>Trip Amount</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @transport_fare.each do |transport_fare| %>
+    <tr>
+      <td><%= transport_fare.id%></td>
+      <td><%= transport_fare.pickup_location%></td>
+      <td><%= transport_fare.drop_location%></td>
+      <td><%= transport_fare.trip_amount%></td>
+      <td><%= link_to :controller => :transport_fares, :action => :edit_transport_fare, :id => transport_fare.id do%>Edit<%end%></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

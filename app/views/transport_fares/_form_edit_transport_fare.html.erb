@@ -1,0 +1,31 @@
+<%= form_for(:transport_fare , url: update_transport_fare_path) do |f| %>
+<div class="form-group">
+<%= f.hidden_field :id%>
+<%= f.label :pickup_location %>
+<%= f.text_field :pickup_location, class: 'form-control col-xl-10 col-sm-6 mb-3' %>
+</div>
+	<% if @transport_fare.errors.full_messages_for(:pickup_location).count == 2 %>
+		<div class="d-block small mt-3" style= "color: red;"><%= @transport_fare.errors.full_messages_for(:pickup_location).second %>  <br><br></div>
+	<% end %>
+	<% if @transport_fare.errors.full_messages_for(:pickup_location).count == 1 %>
+	<div class="d-block small mt-3" style= "color: red;"><%= @transport_fare.errors.full_messages_for(:pickup_location).first %>  <br><br></div>
+	<% end %>
+<div class="form-group">
+	<%= f.label :drop_location %>
+	<%= f.text_field :drop_location, class: 'form-control col-xl-10 col-sm-6 mb-3' %>
+</div>
+	<% if @transport_fare.errors.full_messages_for(:drop_location).first %>
+	<div class="d-block small mt-3" style= "color: red;"><%= @transport_fare.errors.full_messages_for(:drop_location).first %> <br><br></div>
+	<% end %>
+<div class="form-group">
+	<%= f.label :trip_amount %>
+	<%= f.text_field :trip_amount,:cols => 30, :rows => 2 , style: 'resize:none;', class: 'form-control col-xl-10 col-sm-6 mb-3' %>
+</div>
+	<% if @transport_fare.errors.full_messages_for(:trip_amount).count == 2 %>
+	<div class="d-block small mt-3" style= "color: red;"><%= @transport_fare.errors.full_messages_for(:trip_amount).second %>  <br><br></div>
+	<% end %>
+	<% if @transport_fare.errors.full_messages_for(:trip_amount).count == 1 %>
+	<div class="d-block small mt-3" style= "color: red;"><%= @transport_fare.errors.full_messages_for(:trip_amount).first %>  <br><br></div>
+	<% end %>
+	<%= f.submit "Update", class: "col-xl-6 col-sm-6 mb-3 btn btn-primary btn-block mt-2 mx-2" %>
+<% end %>

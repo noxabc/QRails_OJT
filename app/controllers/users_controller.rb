@@ -1,18 +1,13 @@
 class UsersController < ApplicationController
-  def users
-  	@users=User.all
+  layout 'admin'
+
+  def view_user
+    @user = User.all
   end
 
-  def trip_transactions
-  end
+  private
 
-  def balance_loads
-  end
-
-  def history_loads
-  end
-
-  def index
-  	
+  def users_params
+    params.permit(:last_name, :first_name, :middle_name, :username, :password, :password_confirmation, :mobile_number)
   end
 end

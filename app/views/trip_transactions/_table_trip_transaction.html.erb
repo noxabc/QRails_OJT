@@ -1,0 +1,23 @@
+<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Pick-up Location</th>
+      <th>Drop Location</th>
+      <th>Trip Amount</th>
+      <th>Created at</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @trip_transaction.each do |trip_transaction| %>
+    <tr>
+      <td><%= trip_transaction.id%></td>
+      <td><%= trip_transaction.pickup_location%></td>
+      <td><%= trip_transaction.drop_location%></td>
+      <td><%= trip_transaction.trip_amount%></td>
+      <td><%= trip_transaction.created_at%></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

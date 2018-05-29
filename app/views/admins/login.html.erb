@@ -1,0 +1,29 @@
+<body class="bod">
+	<div class="container">
+		<div class="card card-login mx-auto mt-5">
+			<div class="card-header">Admin Login</div>
+			<div class="card-body">
+				<%= form_for(:admin, url: login_path) do |f| %>
+				<div class="form-group">
+					<%= f.label :username %>
+					<%= f.text_field :username, class: 'form-control', placeholder: 'Enter Username' %>
+				</div>
+				<% if @user %>
+					<div class="d-block small mt-3" style= "color: red;"><%= @user %> <br><br></div>
+					<% end %>
+					<div class="form-group">
+						<%= f.label :password %>
+						<%= f.password_field :password, class: 'form-control', placeholder: 'Password' %>
+					</div>
+					<% if @pass %>
+					<div class="d-block small mt-3" style= "color: red;"><%= @pass %> <br><br></div>
+					<% end %>
+					<%= f.submit "Login", class: "btn btn-primary btn-block" %>
+					<% end %>
+					<div class="text-center">
+						<% if @invalid %>
+						<div class="d-block small mt-3" style= "color: red;"><%= @invalid%> <br><br></div>
+						<% end %>
+			</div>
+		</div>
+	</div>

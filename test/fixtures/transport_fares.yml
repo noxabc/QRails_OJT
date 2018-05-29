@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pickup_location: MyString
+  drop_location: MyString
+  trip_amount: 1
+
+two:
+  pickup_location: MyString
+  drop_location: MyString
+  trip_amount: 1

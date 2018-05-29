@@ -1,0 +1,10 @@
+<%= form_for(:load , url: add_load_path) do |f| %>
+	<div class="form-group">
+		<%= f.label :amount_loaded %>
+		<%= f.text_field :amount_loaded, class: 'form-control col-xl-10 col-sm-6 mb-3' %>
+	</div>
+		<% if @load.errors.full_messages_for(:amount_loaded).first %>
+		<div class="d-block small mt-3" style= "color: red;"><%= @load.errors.full_messages_for(:amount_loaded).first %> <br><br></div>
+		<% end %>
+		<%= f.submit "Add", class: "col-xl-6 col-sm-6 mb-3 btn btn-primary btn-block mt-2 mx-2" %>
+		<% end %>

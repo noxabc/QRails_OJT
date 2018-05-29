@@ -1,23 +1,32 @@
 Rails.application.routes.draw do
-  
+
   namespace 'api' do
     namespace 'v1' do
-      resources :users
-      resources :historylogs
-      resources :triptransactions
-      resources :historyloads
-      resources :balanceloads
+      post    'sessions', to: 'sessions#authenticate_user', as: 'login_user'
+      delete  'sessions', to: 'sessions#logout_user',       as: 'logout_user'
+      post    'users',    to: 'users#create_user',          as: 'create_user'
+      resources :transport_fares
     end
   end
-  post   'session', to: 'session#create', as: 'login'
-  delete 'session', to: 'session#destroy', as: 'logout'
 
-  get 'users/index'
-  get 'users/users'
-  get 'users/trip_transactions'
-  get 'users/balance_loads'
-  get 'users/history_loads'
-resources :users
-root 'users#login'
+  get   'admin/:username',        to: 'admins#view'
 
+  # admin login
+  get   'login',                  to: 'admins#login'
+  post  'login',                  to: 'admins#authenticate'
+  get   'logout',                 to: 'admins#destroy_session'
+  get   'index',                  to: 'admins#index'
+
+  # views => users
+  get   'view_user',              to: 'users#view_user'
+  # views => trip transactions
+  get   'view_trip_transaction',  to: 'trip_transactions#view_trip_transaction'
+  # views => transport fares
+  get   'view_transport_fare',    to: 'transport_fares#view_transport_fare'
+  get   'edit_transport_fare',    to: 'transport_fares#edit_transport_fare'
+  patch 'update_transport_fare',  to: 'transport_fares#update_transport_fare'
+  put   'update_transport_fare',  to: 'transport_fares#update_transport_fare'
+  post  'update_transport_fare',  to: 'transport_fares#update_transport_fare'
+
+  root  'admins#index'
 end
