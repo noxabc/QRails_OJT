@@ -20,6 +20,14 @@ class Api::V1::TransportFaresController < ApplicationController
     end
   end
 
+  def compare
+    if transportfare = TransportFare.where("pickup_location = ? AND drop_location = ?", params[:pickup_location], params[:drop_location])
+      render json: { status: 'Success', data:transportfare }, status: :ok
+    else
+      render json: load.errors, status: :unauthorized
+    end
+  end
+
   private
 
   def transportfares_params
