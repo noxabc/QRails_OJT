@@ -5,7 +5,8 @@ Rails.application.routes.draw do
       post    'sessions', to: 'sessions#authenticate_user', as: 'login_user'
       delete  'sessions', to: 'sessions#logout_user',       as: 'logout_user'
       post    'users',    to: 'users#create_user',          as: 'create_user'
-      resources :transport_fares
+      # resources :transport_fares
+      post 'transport_fares', to: 'transport_fares#compare', as: 'transport_fare'
     end
   end
 
