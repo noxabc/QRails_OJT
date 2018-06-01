@@ -3,7 +3,8 @@ class TripTransactionsController < ApplicationController
 
   def view_trip_transaction
     @trip_transaction = TripTransaction.all
-  end
+    p @current_user
+    end
 
   private
 
