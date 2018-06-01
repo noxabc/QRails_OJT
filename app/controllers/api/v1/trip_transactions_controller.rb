@@ -6,39 +6,23 @@ class Api::V1::TripTransactionsController < ApplicationController
     render json: triptransactions.reload, status: :ok
   end
 
-  def show
+  def show_transaction
     triptransaction = TripTransaction.find(params[:id])
     render json: triptransaction.reload, status: :ok
   end
 
-  # def create
-  #   triptransaction = TripTransaction.new(triptransaction_params)
-  #
-  #   if triptransaction.save
-  #     render json: triptransaction.reload, status: :ok
-  #   else
-  #     render json: triptransaction.errors, status: :bad_request
-  #   end
-  # end
-
-  # def destroy
-  #   triptransaction = TripTransaction.find(params[:id])
-  #   triptransaction.destroy
-  #   render json: triptransaction.reload, status: :ok
-  # end
-
-  # def update
-  #   triptransaction = TripTransaction.find(params[:id])
-  #   if triptransaction.update_attributes(triptransaction_params)
-  #     render json: triptransaction.reload, status: :ok
-  #   else
-  #     render json: triptransaction.errors, status: :bad_request
-  #   end
-  # end
+  def create_transaction
+    triptransaction = TripTransaction.new(triptransactions_params)
+    if triptransaction.save
+      render json: triptransaction.reload, status: :ok
+    else
+      render json: triptransaction.errors, status: :bad_request
+    end
+  end
 
   private
 
   def triptransactions_params
-    params.permit(:pickup_location, :drop_location, :trip_amount)
+    params.permit(:pickup_location, :drop_location, :trip_amount, :user_id, :transport_fare_id)
   end
 end
