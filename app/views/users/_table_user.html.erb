@@ -8,6 +8,8 @@
       <th>Username</th>
       <th>Mobile Number</th>
       <th>Date Created</th>
+      <th>Trips</th>
+      <th>Transaction Date</th>
     </tr>
   </thead>
 
@@ -21,6 +23,16 @@
       <td><%= user.username%></td>
       <td><%= user.mobile_number%></td>
       <td><%= user.created_at%></td>
+      <td>
+        <% user.trip_transactions.each do |t| %>
+          <%= t.pickup_location%> - <%= t.drop_location%><br>
+        <% end %>
+      </td>
+      <td>
+        <% user.trip_transactions.each do |t| %>
+          <%= t.created_at%><br>
+        <% end %>
+      </td>
     </tr>
     <% end %>
   </tbody>
