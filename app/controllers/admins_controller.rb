@@ -14,7 +14,7 @@ class AdminsController < ApplicationController
     @admin = Admin.new(params.require(:admin).permit(:username, :password))
     if @admin && @admin1.authenticate(params[:admin][:password])
       session[:admin_id] = @admin1.id
-      redirect_to '/'
+      redirect_to '/view_user'
     elsif @admin.username.blank?
       @user = "Please enter username"
       if @admin.password.blank?
@@ -40,7 +40,7 @@ class AdminsController < ApplicationController
   def login
     @admin = Admin.new
     if session[:admin_id]
-      redirect_to "/"
+      redirect_to "/view_user"
     end
   end
 
