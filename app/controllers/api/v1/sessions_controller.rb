@@ -5,7 +5,7 @@ class Api::V1::SessionsController < ApplicationController
     if user = User.valid_login?(params[:username], params[:password])
       user.password_confirmation = params[:password]
       user.password = params[:password]
-      user.regenerate_auth_token
+      # user.regenerate_auth_token
       render json: { status: 'Success', data:user }, status: :ok
     else
       render json: { error: "Wrong email or password" }, status: :unauthorized
