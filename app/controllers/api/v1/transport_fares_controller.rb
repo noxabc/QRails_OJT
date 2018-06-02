@@ -1,5 +1,5 @@
 class Api::V1::TransportFaresController < ApplicationController
-  before_action :require_login
+  # before_action :require_login
 
   def show_transport_fare
     transportfares = TransportFare.order('created_at ASC');
