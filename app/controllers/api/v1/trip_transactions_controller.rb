@@ -1,5 +1,5 @@
 class Api::V1::TripTransactionsController < ApplicationController
-  before_action :require_login
+  # before_action :require_login
 
   def index
     triptransactions = TripTransaction.order('created_at DESC');
