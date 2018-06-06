@@ -4,7 +4,7 @@ class TripTransactionsController < ApplicationController
   def view_trip_transaction
     @trip_transaction = TripTransaction.all
     p @current_user
-    end
+  end
 
   private
 

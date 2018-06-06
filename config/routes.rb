@@ -31,7 +31,7 @@ Rails.application.routes.draw do
 
   # views => trip transactions
   get   'view_trip_transaction',    to: 'trip_transactions#view_trip_transaction'
-  
+
   # views => transport fares
   get   'view_transport_fare',      to: 'transport_fares#view_transport_fare'
   get   'edit_transport_fare',      to: 'transport_fares#edit_transport_fare'

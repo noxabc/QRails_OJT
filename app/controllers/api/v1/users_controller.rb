@@ -10,11 +10,11 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def update_user
-    user = User.find(params[:id])
-    if user.update_attributes(users_params)
-      render json: user.reload, status: :ok
+    @current_user = User.find(params[:id])
+    if @current_user.update_attributes(users_params)
+      render json: @current_user.reload, status: :ok
     else
-      render json: user.errors, status: :bad_request
+      render json: @current_user.errors, status: :bad_request
     end
   end
 
